@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Seguridad de la configuración DEBUG
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = []
 
 # Custom User model
 AUTH_USER_MODEL = 'usuarios.CustomUser'
