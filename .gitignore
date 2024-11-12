@@ -1,0 +1,21 @@
+# .gitignore
+/Env/
+.env
+
+# Archivos y directorios de configuración
+*.pyc
+__pycache__/
+
+# Base de datos
+db.sqlite3
+
+# Directorio de media
+media/
+
+# Otros archivos sensibles o temporales
+*.log
+*.bak
+*.swp
+*.idea/
+*.vscode/
+*.DS_Store

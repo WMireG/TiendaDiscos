@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    {% block extra_head %}{% endblock %}
+    <title>{% block title %}Tienda de Discos{% endblock %}</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Barra de Navegación -->
+        {% block navbar %}
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo"><a href="{% url 'index' %}">MUSIK!</a></h1>
+                
+                <!-- Formulario de búsqueda -->
+                <form action="{% url 'buscar' %}" method="GET" class="search-form">
+                    <input type="text" name="q" placeholder="Buscar...">
+                    <button type="submit">Buscar</button>
+                </form>
+                
+                <ul class="nav-links">
+                    <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+                    <li><a href="{% url 'carrito' %}">Mi Carrito</a></li>
+                    <li><a href="{% url 'pedidos' %}">Mis Pedidos</a></li>
+                    <li><a href="{% url 'usuarios' %}">Usuario</a></li>
+                </ul>
+            </div>
+        </nav>
+        {% endblock %}
+        
+        <!-- Contenido específico de cada página -->
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 <h3>MUSIK!</h3>   - Todos los derechos reservados.</p>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+/* carrito.css */
+
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para el título del carrito */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos para cada producto en el carrito */
+.producto-carrito {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+/* Eliminar borde del último producto */
+.producto-carrito:last-child {
+    border-bottom: none;
+}
+
+/* Estilos para la imagen del producto */
+.imagen img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Estilos para la información del producto */
+.info {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.info p {
+    margin-bottom: 5px;
+}
+
+/* Estilos para los botones de acción */
+.eliminar-producto, .restar-producto {
+    margin-top: auto;
+}
+
+.eliminar-producto button, .restar-producto button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #d84a3b; /* Color principal */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Añadir margen entre los botones */
+.eliminar-producto {
+    margin-right: 10px;
+}
+
+.eliminar-producto button:hover, .restar-producto button:hover {
+    background-color: #b03e34; /* Color en hover */
+}
+
+/* Estilos para el total del carrito */
+.total {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.total h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Estilo de totalh3 */
+.totalh3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+/* Estilos para el botón de vaciar carrito */
+.total button {
+    width: 150px;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d; /* Color secundario */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.total button:hover {
+    background-color: #5a6268; /* Color en hover */
+}
+
+/* Estilos para el botón de hacer pedido */
+.text-center button {
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745; /* Color de éxito */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.text-center button:hover {
+    background-color: #218838; /* Color en hover */
+}
+
+/* Estilos para la imagen por defecto */
+.imagen img[src*="Kanye01.jpeg"] {
+    max-width: 100px; /* Ajusta el tamaño de la imagen por defecto si es necesario */
+    height: auto;
+    border-radius: 4px;
+}

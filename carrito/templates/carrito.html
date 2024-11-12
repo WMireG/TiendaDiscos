@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/carrito.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Carrito de Compras</h2>
+    <div class="productos">
+        {% for item in carrito.carritodisco_set.all %}
+        <div class="producto-carrito">
+            <div class="imagen">
+                {% if item.disco.imagen_tapa %}
+                    <img src="{{ item.disco.imagen_tapa.url }}" alt="{{ item.disco.nombre }}">
+                {% else %}
+                    <img src="{% static 'img/default.png' %}" alt="Imagen no disponible">
+                {% endif %}
+            </div>
+            <div class="info">
+                <h3>{{ item.disco.nombre }}</h3>
+                <p>Precio unitario: ${{ item.disco.precio }}</p>
+                <p>Cantidad: {{ item.cantidad }}</p>
+                <p>Subtotal: ${{ item.subtotal|floatformat:"2" }}</p>
+            </div>
+            <div class="eliminar-producto">
+                <!-- Botón para eliminar el producto -->
+                <form action="{% url 'eliminar_producto' item.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+            <div class="restar-producto">
+                <!-- Botón para restar el producto -->
+                <form action="{% url 'restar_producto' item.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Restar</button>
+                </form>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay productos en el carrito.</p>
+        {% endfor %}
+
+        <div class="total">
+            <h3 class="totalh3">Total del Carrito: ${{ carrito.total|floatformat:"2" }}</h3>
+            <!-- Botón para limpiar el carrito -->
+            <form method="post" action="{% url 'limpiar_carro' %}">
+                {% csrf_token %}
+                <button type="submit">Limpiar Carro</button>
+            </form>
+        </div>
+
+        {% if carrito.carritodisco_set.count > 0 %}
+        <div class="text-center">
+            <form method="post" action="{% url 'procesar_pedido' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Hacer pedido</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

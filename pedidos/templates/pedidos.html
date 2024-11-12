@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/pedidos.css' %}">
+{% endblock %}
+{% block title %} Mis pedidos {% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Mis Pedidos</h2>
+    {% if pedidos %}
+    <div class="pedidos-lista">
+        {% for pedido in pedidos %}
+        <div class="pedido-card">
+            <h3>Pedido #{{ pedido.id }}</h3>
+            <p><strong>Estado:</strong> {{ pedido.estado }}</p>
+            <p><strong>Fecha de creación:</strong> {{ pedido.crear_en }}</p>
+            <p><strong>Total:</strong> ${{ pedido.total|floatformat:"2" }}</p>
+        </div>
+        {% endfor %}
+        <form method="post" action="{% url 'borrar_pedidos' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger borrar-todos">Borrar pedidos</button>
+        </form>
+    </div>
+    {% else %}
+    <p>No tienes pedidos realizados.</p>
+    {% endif %}
+</div>
+{% endblock %}
